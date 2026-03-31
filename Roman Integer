@@ -1,0 +1,39 @@
+//This is the easiest way to solve the "Roman to Integer" problem that I have learnt from Gemini, and I completely understand it.
+The main reason by this is that I do not know the syntax // 
+
+import java.util.*;
+public class RomanSimple {
+
+    static Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        String Roman = sc.next();
+        int total = 0;
+        int prev = 0;
+        for (int i = 0; i < Roman.length(); i++)  {
+            int current = 0;
+            char c = Roman.charAt(i);
+
+
+            //Step 1, transfer //
+            if ( c == 'I') current = 1;
+            else if (c == 'V') current = 5;
+            else if ( c == 'X') current = 10;
+            else if ( c == 'L') current = 50;
+            else if ( c == 'C') current = 100;
+            else if ( c == 'D') current = 500;
+            else if ( c == 'M') current = 1000;
+
+
+            total +=current;
+            //Step 2; examine //
+            if (prev < current && i > 0) {
+                total -= 2 * prev;
+            }
+
+            prev = current;
+
+        }
+
+        System.out.println(total);
+    }
+}
